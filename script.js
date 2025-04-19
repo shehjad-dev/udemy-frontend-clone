@@ -442,6 +442,7 @@ const LearningPathHandler = (() => {
   };
 
   const autoScrollToTreeBox = () => {
+    // localStorage.setItem('firstAutoScroll', 'true');
     const offset = 100;
     const rect = elements.treeSvg.getBoundingClientRect();
     window.scrollTo({
@@ -497,8 +498,8 @@ const LearningPathHandler = (() => {
     elements.exportToPNG.addEventListener('click', exportToPNG);
     elements.exportToPDF.addEventListener('click', exportToPDF);
 
-    renderTree(roadmaps['frontend-beginner']);
-    autoScrollToTreeBox();
+    renderTree(roadmaps['frontend-beginner'],);
+    // autoScrollToTreeBox();
   };
 
   return { init };
