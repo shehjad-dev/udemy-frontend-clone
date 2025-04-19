@@ -255,6 +255,255 @@ const MobileMenuHandler = (() => {
   return { init };
 })();
 
+const LearningPathHandler = (() => {
+  const elements = {
+    specialization: document.getElementById('specialization'),
+    level: document.getElementById('level'),
+    generateButton: document.getElementById('generateLearningPath'),
+    treeSvg: document.getElementById('treeSvg'),
+    exportToPNG: document.getElementById('exportToPNG'),
+    exportToPDF: document.getElementById('exportToPDF'),
+  };
+
+  const roadmaps = {
+    'frontend-beginner': {
+      name: 'Frontend Beginner Roadmap',
+      children: [
+        { name: 'HTML Basics' },
+        { name: 'CSS Fundamentals', children: [{ name: 'Flexbox' }, { name: 'Grid' }] },
+        { name: 'JavaScript Basics' },
+      ],
+    },
+    'frontend-intermediate': {
+      name: 'Frontend Intermediate Roadmap',
+      children: [
+        { name: 'React Basics' },
+        { name: 'Advanced CSS', children: [{ name: 'Animations' }, { name: 'SASS' }] },
+        { name: 'JavaScript ES6' },
+      ],
+    },
+    'frontend-senior': {
+      name: 'Frontend Senior Roadmap',
+      children: [
+        { name: 'Advanced React' },
+        { name: 'TypeScript' },
+        { name: 'Performance Optimization', children: [{ name: 'Lazy Loading' }, { name: 'Code Splitting' }] },
+      ],
+    },
+    'fullstack-beginner': {
+      name: 'Full Stack Beginner Roadmap',
+      children: [
+        { name: 'HTML & CSS' },
+        { name: 'JavaScript Basics' },
+        { name: 'Node.js Intro' },
+      ],
+    },
+    'fullstack-intermediate': {
+      name: 'Full Stack Intermediate Roadmap',
+      children: [
+        { name: 'Express.js' },
+        { name: 'MongoDB Basics' },
+        { name: 'REST APIs' },
+      ],
+    },
+    'fullstack-senior': {
+      name: 'Full Stack Senior Roadmap',
+      children: [
+        { name: 'Microservices' },
+        { name: 'GraphQL' },
+        { name: 'DevOps Basics', children: [{ name: 'Docker' }, { name: 'CI/CD' }] },
+      ],
+    },
+    'machine-learning-beginner': {
+      name: 'Machine Learning Beginner Roadmap',
+      children: [
+        { name: 'Python Basics' },
+        { name: 'NumPy' },
+        { name: 'Pandas' },
+      ],
+    },
+    'machine-learning-intermediate': {
+      name: 'Machine Learning Intermediate Roadmap',
+      children: [
+        { name: 'Scikit-Learn' },
+        { name: 'TensorFlow Basics' },
+        { name: 'Supervised Learning' },
+      ],
+    },
+    'machine-learning-senior': {
+      name: 'Machine Learning Senior Roadmap',
+      children: [
+        { name: 'Deep Learning' },
+        { name: 'Neural Networks' },
+        { name: 'Model Deployment', children: [{ name: 'AWS SageMaker' }, { name: 'Kubernetes' }] },
+      ],
+    },
+    'data-science-beginner': {
+      name: 'Data Science Beginner Roadmap',
+      children: [
+        { name: 'Python for Data Science' },
+        { name: 'Statistics Basics' },
+        { name: 'Data Visualization' },
+      ],
+    },
+    'data-science-intermediate': {
+      name: 'Data Science Intermediate Roadmap',
+      children: [
+        { name: 'SQL for Data Science' },
+        { name: 'Matplotlib & Seaborn' },
+        { name: 'Machine Learning Intro' },
+      ],
+    },
+    'data-science-senior': {
+      name: 'Data Science Senior Roadmap',
+      children: [
+        { name: 'Big Data with Spark' },
+        { name: 'Advanced Machine Learning' },
+        { name: 'Data Engineering', children: [{ name: 'Airflow' }, { name: 'Kafka' }] },
+      ],
+    },
+  };
+
+  const renderTree = (data) => {
+    const width = elements.treeSvg.parentElement.clientWidth;
+    const height = 800;
+    d3.select(elements.treeSvg).selectAll('*').remove();
+
+    const svg = d3.select(elements.treeSvg)
+      .attr('width', width)
+      .attr('height', height);
+
+    const g = svg.append('g');
+
+    const tree = d3.tree().size([width - 100, height - 300]);
+    const root = d3.hierarchy(data);
+    tree(root);
+
+    g.selectAll('.link')
+      .data(root.links())
+      .enter()
+      .append('path')
+      .attr('class', 'link')
+      .attr('d', d3.linkVertical()
+        .x(d => d.x + 50)
+        .y(d => d.y + 50))
+      .attr('fill', 'none')
+      .attr('stroke', '#94a3b8')
+      .attr('stroke-width', 2);
+
+    const node = g.selectAll('.node')
+      .data(root.descendants())
+      .enter()
+      .append('g')
+      .attr('class', 'node')
+      .attr('transform', d => `translate(${d.x + 50},${d.y + 50})`)
+      .call(d3.drag()
+        .on('start', function () {
+          d3.select(this).raise();
+        })
+        .on('drag', function (event, d) {
+          const newX = Math.max(0, Math.min(width - 100, event.x));
+          const newY = Math.max(0, Math.min(height - 100, event.y));
+          d.x = newX - 50;
+          d.y = newY - 50;
+          d3.select(this).attr('transform', `translate(${newX},${newY})`);
+          g.selectAll('.link')
+            .attr('d', d3.linkVertical()
+              .x(d => d.x + 50)
+              .y(d => d.y + 50));
+        }));
+
+    const text = node.append('text')
+      .attr('dy', 5)
+      .attr('text-anchor', 'middle')
+      .text(d => d.data.name)
+      .attr('fill', '#1e293b')
+      .attr('font-size', '12px')
+      .attr('font-family', 'Inter, sans-serif');
+
+    node.insert('rect', 'text')
+      .attr('y', -20)
+      .attr('height', 40)
+      .attr('rx', 5)
+      .attr('fill', '#e9d5ff')
+      .attr('stroke', '#7e22ce')
+      .attr('stroke-width', 1)
+      .each(function (d) {
+        const textElement = d3.select(this.parentNode).select('text').node();
+        const textWidth = textElement.getBBox().width;
+        const padding = 20;
+        const rectWidth = textWidth + padding;
+        d3.select(this)
+          .attr('width', rectWidth)
+          .attr('x', -rectWidth / 2);
+      });
+
+    g.attr('transform', 'translate(50,50)');
+  };
+
+  const autoScrollToTreeBox = () => {
+    const offset = 100;
+    const rect = elements.treeSvg.getBoundingClientRect();
+    window.scrollTo({
+      top: rect.top + window.scrollY - offset,
+      behavior: 'smooth',
+    });
+  };
+
+  const exportToPNG = () => {
+    html2canvas(elements.treeSvg.parentElement, { backgroundColor: '#ffffff' }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'roadmap.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  };
+
+  const exportToPDF = () => {
+    const { jsPDF } = window.jspdf;
+    html2canvas(elements.treeSvg.parentElement, { backgroundColor: '#ffffff' }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'px',
+        format: [canvas.width, canvas.height],
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save('roadmap.pdf');
+    });
+  };
+
+  const handleGenerate = () => {
+    const spec = elements.specialization.value;
+    const level = elements.level.value;
+    const key = `${spec}-${level}`;
+    const roadmap = roadmaps[key] || roadmaps['frontend-beginner'];
+    renderTree(roadmap);
+    const offset = 100;
+    const rect = elements.treeSvg.getBoundingClientRect();
+    window.scrollTo({
+      top: rect.top + window.scrollY - offset,
+      behavior: 'smooth',
+    });
+  };
+
+  const init = () => {
+    if (!elements.specialization || !elements.level || !elements.generateButton || !elements.treeSvg ||
+      !elements.exportToPNG || !elements.exportToPDF) {
+      console.error('Learning path elements not found');
+      return;
+    }
+    elements.generateButton.addEventListener('click', handleGenerate);
+    elements.exportToPNG.addEventListener('click', exportToPNG);
+    elements.exportToPDF.addEventListener('click', exportToPDF);
+
+    renderTree(roadmaps['frontend-beginner']);
+    autoScrollToTreeBox();
+  };
+
+  return { init };
+})();
+
 const App = (() => {
   const init = () => {
     try {
@@ -264,6 +513,7 @@ const App = (() => {
       PricingHandler.init();
       FeatureCarouselHandler.init();
       MobileMenuHandler.init();
+      LearningPathHandler.init();
     } catch (error) {
       console.error('Application initialization failed:', error);
     }

@@ -24,7 +24,9 @@
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style type="text/tailwindcss">
     @theme {
       --nav-shadow: 0 2px 4px rgba(6, 17, 118, .08), 0 4px 12px rgba(6, 17, 118, .08);
@@ -155,11 +157,17 @@
         display: block;
       }
     }
+
+    .border-slate-300 {
+      border-color: #d1d5db !important;
+    }
   </style>
 
 </head>
 
 <body>
+
+  <!-- header -->
   <section>
     <header
       class="bg-[#FFFFFF] z-50 fixed top-0 right-0 left-0 shadow-[var(--nav-shadow)] px-[12px] md:px-[24px] py-[10px] md:py-[18px]">
@@ -333,6 +341,7 @@
     </header>
   </section>
 
+  <!-- hero -->
   <section class="pt-[130px] md:pt-[150px]">
     <div class="max-w-[1300px] mx-auto">
       <div class="w-full h-fit relative carousel-container">
@@ -387,6 +396,7 @@
 
   </section>
 
+  <!-- career academics -->
   <section class=" ">
     <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
       <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Ready to reimagine your career?</h2>
@@ -492,6 +502,7 @@
     </div>
   </section>
 
+  <!-- courses -->
   <section>
     <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
       <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Learners are viewing</h2>
@@ -569,6 +580,7 @@
     </div>
   </section>
 
+  <!-- clients -->
   <section class="py-[30px] md:py-[80px]">
     <div class="w-fit mx-auto flex flex-col items-center">
       <p class="mb-3 text-base md:text-lg text-slate-600 mt-2 text-center">Trusted by over 16,000 companies and millions
@@ -603,6 +615,60 @@
     </div>
   </section>
 
+  <!-- roadmap generator -->
+  <section class="bg-slate-50">
+    <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
+      <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Build Your Learning Path</h2>
+      <p class="text-base md:text-lg text-slate-600 mt-2">Select your specialization and skill level to generate a
+        personalized learning roadmap.</p>
+
+      <div class="flex flex-col md:flex-col gap-4 mt-8 items-center justify-center">
+        <div class="w-full md:w-1/3">
+          <label for="specialization" class="block text-sm font-medium text-slate-700 mb-2">Specialization</label>
+          <select id="specialization"
+            class="w-full p-3 border-[1px] border-slate-300 rounded-md text-sm text-slate-600 focus:outline-none focus:border-violet-700">
+            <option value="frontend">Frontend</option>
+            <option value="fullstack">Full Stack</option>
+            <option value="machine-learning">Machine Learning</option>
+            <option value="data-science">Data Science</option>
+          </select>
+        </div>
+        <div class="w-full md:w-1/3">
+          <label for="level" class="block text-sm font-medium text-slate-700 mb-2">Level</label>
+          <select id="level"
+            class="w-full p-3 border-[1px] border-slate-300 rounded-md text-sm text-slate-600 focus:outline-none focus:border-violet-700">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+        <div class="w-full md:w-1/3 flex items-end">
+          <button id="generateLearningPath"
+            class="bg-violet-700 hover:bg-purple-700 flex items-center gap-2 justify-center text-white font-bold py-3 px-6 rounded-md w-full md:w-auto cursor-pointer">
+            Generate Learning Path <i data-feather="cpu" class="w-6 h-6 "></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="learningPathTree"
+        class="mt-8 relative h-[800px] overflow-auto border-[1px] border-slate-300 rounded-lg bg-white p-4">
+        <svg id="treeSvg" width="100%" height="100%"></svg>
+        <div class="flex gap-4 mt-4 absolute top-3 right-3">
+          <button id="exportToPNG"
+            class="bg-white flex items-center text-sm gap-2 hover:bg-purple-100 border border-violet-700 cursor-pointer text-violet-700 font-bold py-2 px-4 rounded-md">
+            <i data-feather="image" class="w-4 h-4 "></i> Export as PNG
+          </button>
+          <button id="exportToPDF"
+            class="bg-white flex items-center text-sm gap-2 hover:bg-purple-100 border border-violet-700 cursor-pointer text-violet-700 font-bold py-2 px-4 rounded-md">
+            <i data-feather="file-text" class="w-4 h-4 "></i> Export as PDF
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- goal based learning -->
   <section class="bg-slate-50">
     <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
       <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Learning focused on your goals</h2>
@@ -796,6 +862,7 @@
       </div>
   </section>
 
+  <!-- pricing  -->
   <section class="">
     <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
       <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Accelerate growth — for you or your organization
