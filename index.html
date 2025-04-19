@@ -147,17 +147,158 @@
   <section>
     <header
       class="bg-[#FFFFFF] z-50 fixed top-0 right-0 left-0 shadow-[var(--nav-shadow)] px-[12px] md:px-[24px] py-[10px] md:py-[18px]">
-      <div class="flex items-center justify-between">
-        <button
+      <div class="flex items-center justify-between max-w-[2000px] mx-auto">
+        <button id="mobileMenuButton"
           class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 p-[12px] rounded-md cursor-pointer md:hidden flex items-center justify-center">
           <i data-feather="menu" class="w-4 h-4 ml-[-2px]"></i>
         </button>
 
+        <div id="mobileMenuBox"
+          class=" md:hidden w-[100vw] bg-black/20 backdrop-blur-[2px] transition-all duration-74 ease-in left-[-100vw] fixed top-0 left-0 h-[100vh] z-[1000000]">
+          <div id="mobileMenuList"
+            class="w-[280px] relative flex flex-col overflow-y-auto h-[100vh] bg-white shadow-[var(--nav-shadow)] ">
+            <button id="customMobileMenuCloseBtn"
+              class="bg-white absolute right-[8px] border-[1px] border-slate-300 top-[8px] w-[40px] h-[40px] flex items-center justify-center rounded-full text-salte-800">
+              <i data-feather="x" class="w-4 h-4 ml-[-2px]"></i>
+            </button>
+
+            <h6 class="font-semibold text-slate-700 p-[14px]">Explore</h6>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+              a career</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+              Prep</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+              a career</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+              Prep</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+              a career</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+              Prep</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+              a career</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+              Prep</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+              a career</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+              Prep</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+            <a
+              class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          </div>
+        </div>
+
+        <!-- <div id="mobileMenuBox"
+          class="w-[270px] md:hidden block flex flex-col overflow-y-auto h-[100vh] fixed top-0 left-[-300px] bg-white shadow-[var(--nav-shadow)] transition-all duration-74 ease-in delay-[0.25s]">
+          <h6 class="font-semibold text-slate-700 p-[14px]">Explore</h6>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+            a career</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+            Prep</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+            a career</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+            Prep</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+            a career</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+            Prep</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+            a career</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+            Prep</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+            a career</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+            Prep</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+          <a
+            class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+        </div> -->
+
         <div class="flex gap-3 items-center">
           <img src="/assets/udemyLogo.svg" class="w-[68px] md:w-[91px] h-auto md:h-[34px]" />
           <button
-            class="hover:bg-[#EDE5F9] text-sm hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">
+            class="hover:bg-[#EDE5F9] group relative text-sm hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">
             Explore
+
+            <div
+              class="w-[300px] left-0 absolute transition-all duration-75 ease-in top-[40px] md:group-hover:opacity-100 md:group-hover:pointer-events-auto opacity-0 pointer-events-none bg-white border border-slate-300 pb-3 rounded-xl flex flex-col items-start z-50">
+              <h6 class="font-semibold text-slate-700 p-4">Explore</h6>
+              <a
+                class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Launch
+                a career</a>
+              <a
+                class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Certification
+                Prep</a>
+              <a
+                class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Development</a>
+              <a
+                class="bg-transparent hover:bg-purple-50 hover:text-purple-700 text-slate-600 py-[8px] px-[14px] w-full text-left">Business</a>
+            </div>
           </button>
         </div>
 
@@ -165,14 +306,40 @@
         <div class="flex items-center gap-3">
           <div class="flex items-center">
             <a
-              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Udemy
-              Business</a>
+              class="hover:bg-[#EDE5F9] relative group text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Udemy
+              Business
+              <div
+                class="w-[300px] absolute transition-all duration-75 ease-in top-[40px] group-hover:opacity-100 group-hover:pointer-events-auto opacity-0 pointer-events-none bg-white border border-slate-300 p-6 rounded-xl z-50">
+                <p class="text-lg font-bold text-center leading-[22px] mb-3 text-slate-800">Get your team access to over
+                  27,000 top
+                  Udemy
+                  courses anytime,
+                  anywhere</p>
+                <button
+                  class="flex items-center cursor-pointer justify-center bg-violet-700 hover:bg-purple-700 text-white font-bold h-[50px] w-full rounded-md">Try
+                  Udemy business</button>
+              </div>
+            </a>
             <a
-              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Teach
-              on Udemy</a>
+              class="hover:bg-[#EDE5F9] relative group text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Teach
+              on Udemy
+              <div
+                class="w-[300px] absolute transition-all duration-75 ease-in top-[40px] group-hover:opacity-100 group-hover:pointer-events-auto opacity-0 pointer-events-none bg-white border border-slate-300 p-6 rounded-xl z-50">
+                <p class="text-lg font-bold text-center leading-[22px] mb-3 text-slate-800">Turn what you know into an
+                  opportunity and reach millions around the world</p>
+                <button
+                  class="flex items-center cursor-pointer justify-center bg-violet-700 hover:bg-purple-700 text-white font-bold h-[50px] w-full rounded-md">Learn
+                  more</button>
+              </div>
+            </a>
             <button
-              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 p-[12px] rounded-md cursor-pointer flex items-center justify-center">
+              class="hover:bg-[#EDE5F9] group relative text-sm font-[400] hover:text-purple-700 text-slate-800 p-[12px] rounded-md cursor-pointer flex items-center justify-center">
               <i data-feather="shopping-cart" class="w-4 h-4 ml-[-2px]"></i>
+              <div
+                class="w-[240px] absolute transition-all duration-75 ease-in top-[40px] group-hover:opacity-100 group-hover:pointer-events-auto opacity-0 pointer-events-none bg-white border border-slate-300 p-6 rounded-xl z-50">
+                <p class="text-base text-center leading-[22px] mb-3 text-slate-800">Your cart is empty</p>
+                <p class="w-full h-[40px] text-violet-700 hover:text-violet-600">Keep shopping</p>
+              </div>
             </button>
           </div>
 
@@ -192,7 +359,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="max-w-[2000px] mx-auto">
         <div id="searchInputContainer"
           class="flex items-center md:mb-0 mb-3 hover:bg-slate-50 gap-3 border-[1px] border-slate-400 rounded-full py-[3px] md:py-[2px] px-[3px] md:px-[4px] w-[100%] md:w-[88%] mx-auto mt-2 md:mt-3 overflow-hidden">
           <input id="searchInput" type="text" placeholder="Find expert-led courses to boost your career"
@@ -774,7 +941,7 @@
         free today or
         contact sales to learn more.</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 mt-8">
         <div class="bg-purple-500 pt-[8px] rounded-lg overflow-hidden border-slate-200 border-x-[1px] border-b-[1px]">
           <div class="h-full bg-white relative">
             <div class="pricingDownBtn bg-slate-100 px-[20px] py-[16px]">
@@ -1328,6 +1495,30 @@
         });
       });
     });
+
+
+
+
+    const mobileMenuBox = document.getElementById('mobileMenuBox');
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenuList = document.getElementById('mobileMenuList');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenuBox.classList.remove('left-[-100vw]');
+      // mobileMenuBox.classList.remove('left-[-300px]');
+      mobileMenuBox.classList.add('left-0');
+    });
+
+    mobileMenuBox.addEventListener('click', (e) => {
+      if (!mobileMenuList.contains(e.target)) {
+        mobileMenuBox.classList.remove('left-0');
+        mobileMenuBox.classList.add('left-[-100vw]');
+      }
+    })
+
+    customMobileMenuCloseBtn.addEventListener('click', () => {
+      mobileMenuBox.classList.remove('left-0');
+      mobileMenuBox.classList.add('left-[-100vw]');
+    })
   </script>
 
 
