@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Udemy Clone</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+  <style type="text/tailwindcss">
+    @theme {
+      --nav-shadow: 0 2px 4px rgba(6, 17, 118, .08), 0 4px 12px rgba(6, 17, 118, .08);
+      --input-shadow: inset 0px 0px 3px 0px rgba(109,40,210,0.4);
+    }
+
+
+
+  </style>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    .inter-mineo {
+      font-family: "Inter", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .pt-serif-regular {
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .pt-serif-bold {
+      font-family: "PT Serif", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .pt-serif-regular-italic {
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .pt-serif-bold-italic {
+      font-family: "PT Serif", serif;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      .carousel-item {
+        flex: 0 0 0;
+      }
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      color: rgb(54, 54, 54);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 100%;
+    }
+
+    .carousel-btn:hover {
+      background: rgb(230, 230, 230);
+    }
+
+    .carousel-btn-left {
+      left: 10px;
+    }
+
+    .carousel-btn-right {
+      right: 10px;
+    }
+
+
+
+
+    .carousel-container-v2 {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-v2 {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item-v2 {
+      flex: 0 0 100%;
+    }
+
+    @media (min-width: 768px) {
+      .carousel-container-v2 {
+        display: none;
+      }
+
+      .desktop-view-v2 {
+        display: flex;
+      }
+
+      .mobile-view-v2 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .desktop-view-v2 {
+        display: none;
+      }
+
+      .mobile-view-v2 {
+        display: block;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <section>
+    <header
+      class="bg-[#FFFFFF] z-50 fixed top-0 right-0 left-0 shadow-[var(--nav-shadow)] px-[12px] md:px-[24px] py-[10px] md:py-[18px]">
+      <div class="flex items-center justify-between">
+        <button
+          class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 p-[12px] rounded-md cursor-pointer md:hidden flex items-center justify-center">
+          <i data-feather="menu" class="w-4 h-4 ml-[-2px]"></i>
+        </button>
+
+        <div class="flex gap-3 items-center">
+          <img src="/assets/udemyLogo.svg" class="w-[68px] md:w-[91px] h-auto md:h-[34px]" />
+          <button
+            class="hover:bg-[#EDE5F9] text-sm hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">
+            Explore
+          </button>
+        </div>
+
+
+        <div class="flex items-center gap-3">
+          <div class="flex items-center">
+            <a
+              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Udemy
+              Business</a>
+            <a
+              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 py-[12px] px-[12px] rounded-md cursor-pointer flex items-center justify-center md:inline-flex hidden">Teach
+              on Udemy</a>
+            <button
+              class="hover:bg-[#EDE5F9] text-sm font-[400] hover:text-purple-700 text-slate-800 p-[12px] rounded-md cursor-pointer flex items-center justify-center">
+              <i data-feather="shopping-cart" class="w-4 h-4 ml-[-2px]"></i>
+            </button>
+          </div>
+
+          <div class="hidden md:flex items-center gap-3">
+            <button
+              class="hover:bg-[#EDE5F9] text-sm font-bold hover:text-purple-700 py-[10px] px-[18px] rounded-md cursor-pointer flex items-center justify-center border-[1px] border-violet-500 text-violet-600">
+              Log in
+            </button>
+            <button
+              class="hover:bg-purple-700 bg-violet-700 text-sm font-bold py-[10px] px-[18px] rounded-md cursor-pointer flex items-center justify-center border-[1px] border-violet-700 text-white">
+              Sign up</button>
+            <button
+              class="hover:bg-[#EDE5F9] text-sm font-[400] border-[1px] border-violet-500 p-[12px] rounded-md cursor-pointer flex items-center justify-center">
+              <i data-feather="globe" class="w-4 h-4 ml-[-2px]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="searchInputContainer"
+          class="flex items-center md:mb-0 mb-3 hover:bg-slate-50 gap-3 border-[1px] border-slate-400 rounded-full py-[3px] md:py-[2px] px-[3px] md:px-[4px] w-[100%] md:w-[88%] mx-auto mt-2 md:mt-3 overflow-hidden">
+          <input id="searchInput" type="text" placeholder="Find expert-led courses to boost your career"
+            class="text-sm flex-grow-1 focus:outline-none focus:border-none px-[24px] py-[12px] md:py-[16px]" />
+          <button id="searchButton"
+            class="bg-violet-700 hover:bg-purple-700 disabled cursor-not-allowed opacity-20 w-[44px] md:w-[50px] h-[44px] md:h-[50px] rounded-full flex items-center justify-center text-white">
+            <i data-feather="search" class="w-5 h-5 ml-[-2px]"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+  </section>
+
+  <section class="pt-[130px] md:pt-[150px]">
+    <div class="max-w-[1300px] mx-auto">
+      <div class="w-full h-fit relative carousel-container">
+        <div class="carousel-track">
+          <div class="carousel-item relative">
+            <!-- <img
+            src="https://img-c.udemycdn.com/notices/web_carousel_slide/image/10ca89f6-811b-400e-983b-32c5cd76725a.jpg"
+            alt="" class="md:hidden hidden"> -->
+
+            <div
+              class="bg-[url(https://img-c.udemycdn.com/notices/web_carousel_slide/image/10ca89f6-811b-400e-983b-32c5cd76725a.jpg)] w-[100%] md:h-[400px] h-[300px] md:bg-center bg-position-[74%] bg-cover bg-no-repeat">
+            </div>
+            <div
+              class="bg-white md:absolute block top-0 md:top-1/2 left-[60px] md:-translate-y-1/2 p-[30px] rounded-sm w-[100vw] md:w-[500px] shadow-lg">
+              <h4 class="pt-serif-bold text-2xl md:text-4xl font-bold">Skills that drive you forward</h4>
+              <p class="max-w-[90%] md:text-base text-sm mt-2">Technology and the world of work change fast — with us,
+                you’re faster. Get
+                the skills to achieve goals and stay competitive.</p>
+              <div class="flex md:flex-row flex-col items-center gap-4 mt-4">
+                <button
+                  class="bg-violet-700 border-[1px] border-violet-700 text-white font-bold md:w-fit w-full h-[50px] px-[14px] rounded-sm cursor-pointer hover:bg-purple-700">
+                  Plan for individuals
+                </button>
+                <button
+                  class="bg-white border-[1px] border-violet-700 text-violet-700 font-bold md:w-fit w-full h-[50px] px-[14px] rounded-sm cursor-pointer hover:bg-[#EDE5F9]">
+                  Plan for organizations
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item relative">
+            <!-- <img
+            src="https://img-c.udemycdn.com/notices/web_carousel_slide/image/e6cc1a30-2dec-4dc5-b0f2-c5b656909d5b.jpg"
+            alt="" class="md:block block"> -->
+            <div
+              class="bg-[url(https://img-c.udemycdn.com/notices/web_carousel_slide/image/e6cc1a30-2dec-4dc5-b0f2-c5b656909d5b.jpg)] w-[100%] md:h-[400px] h-[300px] md:bg-center bg-position-[73%] bg-cover bg-no-repeat">
+            </div>
+
+            <div
+              class="bg-white md:absolute md:top-1/2 md:left-[60px] md:-translate-y-1/2 p-[30px] rounded-sm w-[100vw] md:w-[500px] shadow-lg">
+              <h4 class="pt-serif-bold text-2xl md:text-4xl font-bold">Learning that gets you</h4>
+              <p class="max-w-[90%] md:text-base text-sm mt-2">Skills for your present (and your future). Get started
+                with
+                us.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn carousel-btn-left shadow-lg">
+          <i data-feather="chevron-left" class="w-5 h-5 ml-[-2px] rounded-full"></i>
+        </button>
+        <button class="carousel-btn carousel-btn-right shadow-lg">
+          <i data-feather="chevron-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class=" ">
+    <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
+      <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Ready to reimagine your career?</h2>
+      <p class="text-base md:text-lg text-slate-600 mt-2">Get the skills and real-world experience employers want with
+        Career
+        Academies.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <div class="border-[1px] bg-white hover:bg-slate-50 border-slate-300 rounded-xl p-4 cursor-pointer">
+          <img class="rounded-xl" src="https://s.udemycdn.com/career-academies/product-cards/career-card-fswd.png"
+            alt="" class="w-full">
+          <h4 class="text-lg font-bold text-slate-700 mt-6">Full Stack Web Developer</h4>
+          <div class="flex items-center gap-2 text-xs text-slate-600 mt-1">
+            <span>$127,005 avg. salary (US)</span>
+            <span>•</span>
+            <span>16,500 open jobs (US)</span>
+          </div>
+
+          <div class="flex items-center gap-1 mt-4">
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 36 36">
+                <path fill="#FFAC33"
+                  d="M27.287 34.627c-.404 0-.806-.124-1.152-.371L18 28.422l-8.135 5.834a1.97 1.97 0 0 1-2.312-.008a1.971 1.971 0 0 1-.721-2.194l3.034-9.792l-8.062-5.681a1.98 1.98 0 0 1-.708-2.203a1.978 1.978 0 0 1 1.866-1.363L12.947 13l3.179-9.549a1.976 1.976 0 0 1 3.749 0L23 13l10.036.015a1.975 1.975 0 0 1 1.159 3.566l-8.062 5.681l3.034 9.792a1.97 1.97 0 0 1-.72 2.194a1.957 1.957 0 0 1-1.16.379z" />
+              </svg>
+              <span>4.7</span>
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              438k Ratings
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              87 total hours
+            </span>
+          </div>
+        </div>
+        <div class="border-[1px] bg-white hover:bg-slate-50 border-slate-300 rounded-xl p-4 cursor-pointer">
+          <img class="rounded-xl"
+            src="https://s.udemycdn.com/career-academies/product-cards/career-card-digitalmarketer.png" alt=""
+            class="w-full">
+          <h4 class="text-lg font-bold text-slate-700 mt-6">Digital Marketer</h4>
+          <div class="flex items-center gap-2 text-xs text-slate-600 mt-1">
+            <span>$127,005 avg. salary (US)</span>
+            <span>•</span>
+            <span>16,500 open jobs (US)</span>
+          </div>
+
+          <div class="flex items-center gap-1 mt-4">
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 36 36">
+                <path fill="#FFAC33"
+                  d="M27.287 34.627c-.404 0-.806-.124-1.152-.371L18 28.422l-8.135 5.834a1.97 1.97 0 0 1-2.312-.008a1.971 1.971 0 0 1-.721-2.194l3.034-9.792l-8.062-5.681a1.98 1.98 0 0 1-.708-2.203a1.978 1.978 0 0 1 1.866-1.363L12.947 13l3.179-9.549a1.976 1.976 0 0 1 3.749 0L23 13l10.036.015a1.975 1.975 0 0 1 1.159 3.566l-8.062 5.681l3.034 9.792a1.97 1.97 0 0 1-.72 2.194a1.957 1.957 0 0 1-1.16.379z" />
+              </svg>
+              <span>4.7</span>
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              438k Ratings
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              87 total hours
+            </span>
+          </div>
+        </div>
+        <div class="border-[1px] bg-white hover:bg-slate-50 border-slate-300 rounded-xl p-4 cursor-pointer">
+          <img class="rounded-xl"
+            src="https://s.udemycdn.com/career-academies/product-cards/career-card-data-scientist.png" alt=""
+            class="w-full">
+          <h4 class="text-lg font-bold text-slate-700 mt-6">Data Scientist</h4>
+          <div class="flex items-center gap-2 text-xs text-slate-600 mt-1">
+            <span>$127,005 avg. salary (US)</span>
+            <span>•</span>
+            <span>16,500 open jobs (US)</span>
+          </div>
+
+          <div class="flex items-center gap-1 mt-4">
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 36 36">
+                <path fill="#FFAC33"
+                  d="M27.287 34.627c-.404 0-.806-.124-1.152-.371L18 28.422l-8.135 5.834a1.97 1.97 0 0 1-2.312-.008a1.971 1.971 0 0 1-.721-2.194l3.034-9.792l-8.062-5.681a1.98 1.98 0 0 1-.708-2.203a1.978 1.978 0 0 1 1.866-1.363L12.947 13l3.179-9.549a1.976 1.976 0 0 1 3.749 0L23 13l10.036.015a1.975 1.975 0 0 1 1.159 3.566l-8.062 5.681l3.034 9.792a1.97 1.97 0 0 1-.72 2.194a1.957 1.957 0 0 1-1.16.379z" />
+              </svg>
+              <span>4.7</span>
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              438k Ratings
+            </span>
+            <span
+              class="flex items-center gap-2 border-[1px] border-slate-300 rounded-sm px-[4px] py-[2px] text-xs text-slate-600">
+              87 total hours
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="bg-white border-[1px] border-violet-700 text-violet-700 font-bold md:w-fit w-full h-[50px] px-[14px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-8">All
+        Career Academics</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
+      <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Learners are viewing</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+        <div class="bg-white rounded-lg border-[1px] border-slate-300 overflow-hidden">
+          <img src="https://img-c.udemycdn.com/course/240x135/2776760_f176_10.jpg" alt="" class="w-full">
+
+          <div class="p-4">
+            <h3 class="text-[17px] text-slate-700 font-bold mb-2 leading-[20px]">100 Days of Code: The Complete Python
+              Pro Bootcamp
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">Dr. Angela Yu, Developer and Lead...</p>
+            <div class="flex items-center mb-2 gap-2">
+              <span class="text-sm text-yellow-900 font-medium">4.7</span>
+              <span class="text-yellow-500">★★★★★</span>
+              <span class="text-sm text-gray-600">(364,367)</span>
+            </div>
+            <p class="text-lg font-bold mb-2">$74.99</p>
+            <span class="text-sm bg-teal-100 text-teal-800 px-2 py-1 rounded">Bestseller</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border-[1px] border-slate-300 overflow-hidden">
+          <img src="https://img-c.udemycdn.com/course/240x135/1565838_e54e_18.jpg" alt="" class="w-full">
+
+          <div class="p-4">
+            <h3 class="text-[17px] text-slate-700 font-bold mb-2 leading-[20px]">The Complete Full-Stack Web Development
+              Bootcamp
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">Dr. Angela Yu, Developer and Lead...</p>
+            <div class="flex items-center mb-2 gap-2">
+              <span class="text-sm text-yellow-900 font-medium">4.7</span>
+              <span class="text-yellow-500">★★★★★</span>
+              <span class="text-sm text-gray-600">(364,367)</span>
+            </div>
+            <p class="text-lg font-bold mb-2">$74.99</p>
+            <span class="text-sm bg-teal-100 text-teal-800 px-2 py-1 rounded">Bestseller</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border-[1px] border-slate-300 overflow-hidden">
+          <img src="https://img-c.udemycdn.com/course/240x135/3142166_a637_3.jpg" alt="" class="w-full">
+
+          <div class="p-4">
+            <h3 class="text-[17px] text-slate-700 font-bold mb-2 leading-[20px]">[NEW] Ultimate AWS Certified Cloud
+              Practitioner CLF-C02 2025
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">Dr. Angela Yu, Developer and Lead...</p>
+            <div class="flex items-center mb-2 gap-2">
+              <span class="text-sm text-yellow-900 font-medium">4.7</span>
+              <span class="text-yellow-500">★★★★★</span>
+              <span class="text-sm text-gray-600">(364,367)</span>
+            </div>
+            <p class="text-lg font-bold mb-2">$74.99</p>
+            <span class="text-sm bg-teal-100 text-teal-800 px-2 py-1 rounded">Bestseller</span>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border-[1px] border-slate-300 overflow-hidden">
+          <img src="https://img-c.udemycdn.com/course/240x135/2196488_8fc7_10.jpg" alt="" class="w-full">
+
+          <div class="p-4">
+            <h3 class="text-[17px] text-slate-700 font-bold mb-2 leading-[20px]">Ultimate AWS Certified Solutions
+              Architect Associate 2025
+            </h3>
+            <p class="text-sm text-gray-600 mb-2">Dr. Angela Yu, Developer and Lead...</p>
+            <div class="flex items-center mb-2 gap-2">
+              <span class="text-sm text-yellow-900 font-medium">4.7</span>
+              <span class="text-yellow-500">★★★★★</span>
+              <span class="text-sm text-gray-600">(364,367)</span>
+            </div>
+            <p class="text-lg font-bold mb-2">$74.99</p>
+            <span class="text-sm bg-teal-100 text-teal-800 px-2 py-1 rounded">Bestseller</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-[30px] md:py-[80px]">
+    <div class="w-fit mx-auto flex flex-col items-center">
+      <p class="mb-3 text-base md:text-lg text-slate-600 mt-2 text-center">Trusted by over 16,000 companies and millions
+        of learners
+        around the world</p>
+      <ul class="flex items-center justify-center gap-4 md:gap-10 flex-wrap">
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/tqevknj7om/svg/volkswagen_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Volkswagen logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/2gevcc0kxt/svg/samsung_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Samsung logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/mueb2ve09x/svg/cisco_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Cisco logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/ryaowrcjb2/svg/vimeo_logo_resized-2.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Vimeo logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/bthyo156te/svg/procter_gamble_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Procter &amp; Gamble logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/luqe0d6mx2/svg/hewlett_packard_enterprise_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Hewlett Packard logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/siaewwmkch/svg/citi_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Citi logo"></li>
+        <li class=""><img
+            src="https://cms-images.udemycdn.com/content/swmv0okrlh/svg/ericsson_logo.svg?position=c&amp;quality=80&amp;x.app=portals"
+            alt="Ericsson logo"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
+      <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Learning focused on your goals</h2>
+
+      <!-- <div class="mt-8 flex items-center justify-between">
+        <div class="space-y-4">
+          <div
+            class="isActiveGoal goalFeaturedOption bg-purple-500 cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-purple-500 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px] ">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/7kN9RBFSMFNHzsGWsElMPi/dde73f8d1c47e046f035274e78410590/hands-on-practice.png"
+                alt="" class=" w-[64px] h-[64px]">
+
+              <div class="">
+                <h6 class="text-lg font-bold">Hands-on training</h6>
+                <p class="text-base text-slate-600">Upskill effectively with AI-powered coding exercises, practice
+                  tests,
+                  and quizzes.</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300  border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px] ">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/2Xh9YHJustDwCEjn5IlO25/93e9b15c6e74876db0dec63466fcc5a0/certificate.png"
+                alt="" class=" w-[64px] h-[64px]">
+
+              <div class="">
+                <h6 class="text-lg font-bold">Certification prep</h6>
+                <p class="text-base text-slate-600">Prep for industry-recognized certifications by solving real-world
+                  challenges and earn badges along the way.</p>
+
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Explore Courses
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px] ">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/6w8plrr7vY9rIY46UuX0q5/2f0a3f0c22e99bd2d430b998c81321f2/empty-state-1.png"
+                alt="" class=" w-[64px] h-[64px]">
+
+              <div class="">
+                <h6 class="text-lg font-bold flex items-center gap-2">Insights and analytics
+                  <span
+                    class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                    Plan</span>
+                </h6>
+                <p class="text-base text-slate-600">Fast-track goals with advanced insights plus a dedicated customer
+                  success team to help drive effective learning.</p>
+
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Find out more
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px] ">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/2tKGBrb1N60wox2Lh8j3tz/7f1528c9f88ea47bd6ebb46f345902c3/organizations-2.png"
+                alt="" class=" w-[64px] h-[64px]">
+
+              <div class="">
+                <h6 class="text-lg font-bold flex items-center gap-2">Customizable content
+                  <span
+                    class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                    Plan</span>
+                </h6>
+                <p class="text-base text-slate-600">Create tailored learning paths for team and organization goals and
+                  even host your own content and resources.</p>
+
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Find out more
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img id="goalFeaturedImage"
+          src="https://cms-images.udemycdn.com/96883mtakkm8/4kbyXne3Slx9Sfz4nTBqdf/8ac2b75db1a118f15e2fb5dfe2bb4567/desktop-hands-on-learning-2x.png"
+          alt="" class="w-[50%] isActiveGoalImg inline-flex ">
+      </div> -->
+
+      <div class="mt-8 flex items-center justify-between flex-col-reverse gap-3 md:flex-row">
+        <!-- Desktop View -->
+        <div class="space-y-4 md:flex flex-col hidden">
+          <div
+            class="isActiveGoal goalFeaturedOption bg-purple-500 cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-purple-500 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px]">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/7kN9RBFSMFNHzsGWsElMPi/dde73f8d1c47e046f035274e78410590/hands-on-practice.png"
+                alt="" class="w-[64px] h-[64px]">
+              <div>
+                <h6 class="text-lg font-bold">Hands-on training</h6>
+                <p class="text-base text-slate-600">Upskill effectively with AI-powered coding exercises, practice
+                  tests, and quizzes.</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px]">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/2Xh9YHJustDwCEjn5IlO25/93e9b15c6e74876db0dec63466fcc5a0/certificate.png"
+                alt="" class="w-[64px] h-[64px]">
+              <div>
+                <h6 class="text-lg font-bold">Certification prep</h6>
+                <p class="text-base text-slate-600">Prep for industry-recognized certifications by solving real-world
+                  challenges and earn badges along the way.</p>
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Explore Courses
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px]">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/6w8plrr7vY9rIY46UuX0q5/2f0a3f0c22e99bd2d430b998c81321f2/empty-state-1.png"
+                alt="" class="w-[64px] h-[64px]">
+              <div>
+                <h6 class="text-lg font-bold flex items-center gap-2">
+                  Insights and analytics
+                  <span
+                    class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                    Plan</span>
+                </h6>
+                <p class="text-base text-slate-600">Fast-track goals with advanced insights plus a dedicated customer
+                  success team to help drive effective learning.</p>
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Find out more
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-[520px] border-slate-300 border-[1px] overflow-hidden">
+            <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-white h-[156px] py-[32px] px-[20px]">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/2tKGBrb1N60wox2Lh8j3tz/7f1528c9f88ea47bd6ebb46f345902c3/organizations-2.png"
+                alt="" class="w-[64px] h-[64px]">
+              <div>
+                <h6 class="text-lg font-bold flex items-center gap-2">
+                  Customizable content
+                  <span
+                    class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                    Plan</span>
+                </h6>
+                <p class="text-base text-slate-600">Create tailored learning paths for team and organization goals and
+                  even host your own content and resources.</p>
+                <button
+                  class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                  Find out more
+                  <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Carousel View -->
+        <div class="carousel-container-v2 mobile-view w-full">
+          <div class="carousel-v2">
+            <div
+              class="carousel-item-v2 isActiveGoal goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-full border-[0px] overflow-hidden">
+              <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-transparent h-fit py-[14px]">
+                <img
+                  src="https://cms-images.udemycdn.com/96883mtakkm8/7kN9RBFSMFNHzsGWsElMPi/dde73f8d1c47e046f035274e78410590/hands-on-practice.png"
+                  alt="" class="w-[64px] h-[64px] hidden">
+                <div>
+                  <h6 class="text-base md:text-lg font-bold">Hands-on training</h6>
+                  <p class="text-sm md:text-base text-slate-600">Upskill effectively with AI-powered coding exercises,
+                    practice
+                    tests, and quizzes.</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="carousel-item-v2 bg-transparent goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-full border-slate-300 border-[0px] overflow-hidden">
+              <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-transparent h-fit py-[14px]">
+                <img
+                  src="https://cms-images.udemycdn.com/96883mtakkm8/2Xh9YHJustDwCEjn5IlO25/93e9b15c6e74876db0dec63466fcc5a0/certificate.png"
+                  alt="" class="w-[64px] h-[64px] hidden">
+                <div>
+                  <h6 class="text-base md:text-lg font-bold">Certification prep</h6>
+                  <p class="text-sm md:text-base text-slate-600">Prep for industry-recognized certifications by solving
+                    real-world
+                    challenges and earn badges along the way.</p>
+                  <button
+                    class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                    Explore Courses
+                    <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="carousel-item-v2 bg-transparent goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-full border-slate-300 border-[0px] overflow-hidden">
+              <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-transparent h-fit py-[14px]">
+                <img
+                  src="https://cms-images.udemycdn.com/96883mtakkm8/6w8plrr7vY9rIY46UuX0q5/2f0a3f0c22e99bd2d430b998c81321f2/empty-state-1.png"
+                  alt="" class="w-[64px] h-[64px] hidden">
+                <div>
+                  <h6 class="text-base md:text-lg font-bold flex items-center gap-2">
+                    Insights and analytics
+                    <span
+                      class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                      Plan</span>
+                  </h6>
+                  <p class="text-sm md:text-base text-slate-600">Fast-track goals with advanced insights plus a
+                    dedicated customer
+                    success team to help drive effective learning.</p>
+                  <button
+                    class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                    Find out more
+                    <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="carousel-item-v2 bg-transparent goalFeaturedOption cursor-pointer group hover:bg-slate-200 pl-[6px] hover:border-slate-300 rounded-md w-full border-slate-300 border-[0px] overflow-hidden">
+              <div class="flex items-center group-hover:bg-slate-200 gap-3 bg-transparent h-fit py-[14px]">
+                <img
+                  src="https://cms-images.udemycdn.com/96883mtakkm8/2tKGBrb1N60wox2Lh8j3tz/7f1528c9f88ea47bd6ebb46f345902c3/organizations-2.png"
+                  alt="" class="w-[64px] h-[64px] hidden">
+                <div>
+                  <h6 class="text-base md:text-lg font-bold flex items-center gap-2">
+                    Customizable content
+                    <span
+                      class="bg-indigo-100/20 border-[1px] border-indigo-600 text-indigo-600 py-[1px] px-2 rounded-md text-xs">Enterprise
+                      Plan</span>
+                  </h6>
+                  <p class="text-sm md:text-base text-slate-600">Create tailored learning paths for team and
+                    organization goals and
+                    even host your own content and resources.</p>
+                  <button
+                    class="bg-transparent flex hover:ring-4 ring-[#EDE5F9] items-center gap-2 text-violet-700 font-bold md:w-fit w-full h-[34px] px-[0px] rounded-sm cursor-pointer hover:bg-[#EDE5F9] mt-2">
+                    Find out more
+                    <i data-feather="arrow-right" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full" id="prevBtn">
+            <i data-feather="chevron-left" class="w-6 h-6"></i>
+          </button>
+          <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full" id="nextBtn">
+            <i data-feather="chevron-right" class="w-6 h-6"></i>
+          </button>
+          <div class="flex justify-center mt-2">
+            <div class="flex space-x-2">
+              <div class="w-3 h-3 bg-purple-500 rounded-full carousel-dot-v2"></div>
+              <div class="w-3 h-3 bg-gray-300 rounded-full carousel-dot-v2"></div>
+              <div class="w-3 h-3 bg-gray-300 rounded-full carousel-dot-v2"></div>
+              <div class="w-3 h-3 bg-gray-300 rounded-full carousel-dot-v2"></div>
+            </div>
+          </div>
+        </div>
+
+        <img id="goalFeaturedImage"
+          src="https://cms-images.udemycdn.com/96883mtakkm8/4kbyXne3Slx9Sfz4nTBqdf/8ac2b75db1a118f15e2fb5dfe2bb4567/desktop-hands-on-learning-2x.png"
+          alt="" class="w-full md:w-[50%] isActiveGoalImg inline-flex mt-4 md:mt-0">
+
+      </div>
+  </section>
+
+  <section class="">
+    <div class="max-w-[1300px] mx-auto px-[20px] md:px-[60px] py-[30px] md:py-[80px]">
+      <h2 class="md:text-4xl text-slate-800 text-2xl pt-serif-bold">Accelerate growth — for you or your organization
+      </h2>
+      <p class="text-base md:text-lg text-slate-600 mt-2">Reach goals faster with one of our plans or programs. Try one
+        free today or
+        contact sales to learn more.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <div class="bg-purple-500 pt-[8px] rounded-lg overflow-hidden border-slate-200 border-x-[1px] border-b-[1px]">
+          <div class="h-full bg-white relative">
+            <div class="pricingDownBtn bg-slate-100 px-[20px] py-[16px]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h6 class="pt-serif-bold text-xl">Personal Plan</h6>
+                  <p class="text-slate-600 -mt-1 text-xs">For you</p>
+                </div>
+
+                <button class="md:hidden inline-flex">
+                  <i data-feather="chevron-down" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+
+
+              <div class="text-slate-600 text-sm flex items-center gap-2 mt-2">
+                <i data-feather="user" class="w-4 h-4 ml-[-2px]"></i>
+                <p>Individual</p>
+              </div>
+            </div>
+            <div class="pricingContentToShow px-[20px] py-[16px] md:block hidden">
+              <p class="text-base font-bold">Starting at $11.00 per month</p>
+              <p class="text-xs text-slate-600 -mt-1">Billed monthly or annually. Cancel anytime.</p>
+
+              <button
+                class="flex hover:bg-purple-700 items-center gap-2 justify-center bg-violet-700 text-white font-bold py-[12px] px-[18px] rounded-md cursor-pointer mt-4 w-full">
+                Try it free
+                <i data-feather="arrow-right" class="w-4 h-4 ml-[-2px]"></i>
+              </button>
+
+              <div class="text-slate-600 text-sm mt-6 space-y-2">
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Access to 12,000+ top courses</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Certification prep</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Goal-focused recommendations</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">AI-powered coding exercises</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-indigo-700 pt-[8px] rounded-lg overflow-hidden border-slate-200 border-x-[1px] border-b-[1px]">
+          <div class="h-full bg-white">
+            <div class="pricingDownBtn bg-slate-100 px-[20px] py-[16px]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h6 class="pt-serif-bold text-xl">Team Plan</h6>
+                  <p class="text-slate-600 -mt-1 text-xs">For your team</p>
+                </div>
+
+                <button class="md:hidden inline-flex">
+                  <i data-feather="chevron-down" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+
+              <div class="text-slate-600 text-sm flex items-center gap-2 mt-2">
+                <i data-feather="users" class="w-4 h-4 ml-[-2px]"></i>
+                <p>2 to 20 people</p>
+              </div>
+            </div>
+            <div class="pricingContentToShow px-[20px] py-[16px] md:block hidden">
+              <p class="text-base font-bold">$30.00 a month per user</p>
+              <p class="text-xs text-slate-600 -mt-1">Billed annually. Cancel anytime..</p>
+
+              <button
+                class="flex hover:bg-purple-700 items-center gap-2 justify-center bg-violet-700 text-white font-bold py-[12px] px-[18px] rounded-md cursor-pointer mt-4 w-full">
+                Try it free
+                <i data-feather="arrow-right" class="w-4 h-4 ml-[-2px]"></i>
+              </button>
+
+              <div class="text-slate-600 text-sm mt-6 space-y-2">
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Access to 12,000+ top courses</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Certification prep</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Goal-focused recommendations</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">AI-powered coding exercises</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Analytics and adoption reports</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-indigo-700 pt-[8px] rounded-lg overflow-hidden border-slate-200 border-x-[1px] border-b-[1px]">
+          <div class="bg-white">
+            <div class="pricingDownBtn bg-slate-100 px-[20px] py-[16px]">
+
+              <div class="flex items-center justify-between">
+                <div>
+                  <h6 class="pt-serif-bold text-xl">Enterprise Plan</h6>
+                  <p class="text-slate-600 -mt-1 text-xs">For your whole organization</p>
+                </div>
+
+                <button class="md:hidden inline-flex">
+                  <i data-feather="chevron-down" class="w-5 h-5 mr-[-2px] rounded-full"></i>
+                </button>
+              </div>
+
+              <div class="text-slate-600 text-sm flex items-center gap-2 mt-2">
+                <i data-feather="user" class="w-4 h-4 ml-[-2px]"></i>
+                <p>More than 20 people</p>
+              </div>
+            </div>
+            <div class="pricingContentToShow px-[20px] py-[16px] md:block hidden">
+              <p class="text-base font-bold">Contact sales for pricing</p>
+              <p class="text-xs text-slate-600 -mt-1 opacity-0">Billed monthly or annually. Cancel anytime.</p>
+
+              <button
+                class="flex hover:bg-purple-700 items-center gap-2 justify-center bg-violet-700 text-white font-bold py-[12px] px-[18px] rounded-md cursor-pointer mt-4 w-full">
+                Request a demo
+                <i data-feather="arrow-right" class="w-4 h-4 ml-[-2px]"></i>
+              </button>
+              <div class="text-slate-600 text-sm mt-6 space-y-2">
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Access to 27,000+ top courses</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Certification prep</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Goal-focused recommendations</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">AI-powered coding exercises</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Advanced analytics and insights</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Dedicated customer success team</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">International course collection featuring 15 languages</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Customizable content</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Hands-on tech training with add-on</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-feather="check-circle" class="w-3 h-3 ml-[-2px]"></i>
+                  <span class="text-slate-700">Strategic implementation services with add-on</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="bg-[#1D1E27] pt-8">
+    <div class="">
+      <div class=" border-b border-white">
+        <div class="mb-8 max-w-[2000px] w-[96vw] mx-auto flex md:flex-row flex-col items-center justify-between">
+          <p class="text-white md:text-left text-center font-bold text-base">
+            Top companies choose <span class="text-indigo-200">Udemy Business</span> to build in-demand career skills.
+          </p>
+          <div class="flex justify-center space-x-6 flex-wrap">
+            <img src="https://s.udemycdn.com/partner-logos/v4/nasdaq-light.svg" />
+            <img src="https://s.udemycdn.com/partner-logos/v4/volkswagen-light.svg" />
+            <img src="https://s.udemycdn.com/partner-logos/v4/netapp-light.svg" />
+            <img src="https://s.udemycdn.com/partner-logos/v4/eventbrite-light.svg" />
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-[2000px] w-[96vw] mx-auto mt-6 text-white ">
+        <h6 class="text-lg pt-serif-bold">Explore top skills and certifications</h6>
+        <div class="grid text-white grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8 mt-3">
+          <div>
+            <h4 class="text-sm font-semibold mb-3">In-demand Careers</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Data Scientist</a></li>
+              <li><a href="#" class="hover:underline">Full Stack Web Developer</a></li>
+              <li><a href="#" class="hover:underline">Cloud Engineer</a></li>
+              <li><a href="#" class="hover:underline">Project Manager</a></li>
+              <li><a href="#" class="hover:underline">Game Developer</a></li>
+              <li><a href="#" class="hover:underline">See all Career Academies</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Web Development</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">JavaScript</a></li>
+              <li><a href="#" class="hover:underline">React JS</a></li>
+              <li><a href="#" class="hover:underline">Angular</a></li>
+              <li><a href="#" class="hover:underline">Java</a></li>
+            </ul>
+
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">IT Certifications</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Amazon AWS</a></li>
+              <li><a href="#" class="hover:underline">AWS Certified Cloud Practitioner</a></li>
+              <li><a href="#" class="hover:underline">AZ-900: Microsoft Azure Fundamentals</a></li>
+              <li><a href="#" class="hover:underline">AWS Certified Solutions Architect - Associate</a></li>
+              <li><a href="#" class="hover:underline">Kubernetes</a></li>
+            </ul>
+
+
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Leadership</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Leadership Skills</a></li>
+              <li><a href="#" class="hover:underline">Management Skills</a></li>
+              <li><a href="#" class="hover:underline">Project Management</a></li>
+              <li><a href="#" class="hover:underline">Personal Productivity</a></li>
+              <li><a href="#" class="hover:underline">Emotional Intelligence</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid text-white grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8 mt-3">
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Certification by Skill</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Cybersecurity Certification</a></li>
+              <li><a href="#" class="hover:underline">Project Management Certification</a></li>
+              <li><a href="#" class="hover:underline">Cloud Certification</a></li>
+              <li><a href="#" class="hover:underline">Data Analytics Certification</a></li>
+              <li><a href="#" class="hover:underline">Management Certification</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Data Science</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Python</a></li>
+              <li><a href="#" class="hover:underline">Machine Learning</a></li>
+              <li><a href="#" class="hover:underline">ChatGPT</a></li>
+              <li><a href="#" class="hover:underline">Deep Learning</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Communication</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">Communication Skills</a></li>
+              <li><a href="#" class="hover:underline">Presentation Skills</a></li>
+              <li><a href="#" class="hover:underline">Public Speaking</a></li>
+              <li><a href="#" class="hover:underline">Writing</a></li>
+              <li><a href="#" class="hover:underline">PowerPoint</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-3">Business Analytics & Intelligence</h4>
+            <ul class="space-y-2 text-xs text-white">
+              <li><a href="#" class="hover:underline">SQL</a></li>
+              <li><a href="#" class="hover:underline">Excel</a></li>
+              <li><a href="#" class="hover:underline">Microsoft Power BI</a></li>
+              <li><a href="#" class="hover:underline">Data Analysis</a></li>
+              <li><a href="#" class="hover:underline">Business Analysis</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-[#111116] py-[20px]">
+        <div class=" max-w-[2000px] w-[96vw] mx-auto mt-6 text-white ">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 class="text-lg font-semibold mb-4">About</h4>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:underline">About us</a></li>
+                <li><a href="#" class="hover:underline">Careers</a></li>
+                <li><a href="#" class="hover:underline">Contact us</a></li>
+                <li><a href="#" class="hover:underline">Blog</a></li>
+                <li><a href="#" class="hover:underline">Investors</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Discover Udemy</h4>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:underline">Get the app</a></li>
+                <li><a href="#" class="hover:underline">Teach on Udemy</a></li>
+                <li><a href="#" class="hover:underline">TEACH ON UDEMY</a></li>
+                <li><a href="#" class="hover:underline">Plans & Pricing</a></li>
+                <li><a href="#" class="hover:underline">Affiliate</a></li>
+                <li><a href="#" class="hover:underline">Help and Support</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Udemy for Business</h4>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:underline">Udemy Business</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Legal & Accessibility</h4>
+              <ul class="space-y-2 text-sm text-gray-400">
+                <li><a href="#" class="hover:underline">Accessibility statement</a></li>
+                <li><a href="#" class="hover:underline">Privacy policy</a></li>
+                <li><a href="#" class="hover:underline">Sitemap</a></li>
+                <li><a href="#" class="hover:underline">TERMS</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 pt-4">
+          <div
+            class="max-w-[2000px] w-[96vw] mx-auto mt-0 text-white flex md:flex-row flex-col gap-3 justify-between items-center ">
+
+            <div class="flex items-center gap-3">
+              <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg"
+                class="w-[68px] md:w-[91px] h-auto md:h-[34px] text-white" />
+              <span class="text-white text-sm">© 2025 Udemy, Inc.</span>
+            </div>
+            <a href="#" class="text-gray-400 text-sm hover:underline">Cookie settings</a>
+
+            <div class="flex text-white items-center space-x-4 gap-2">
+              <i data-feather="globe" class="w-4 h-4"></i>
+              <span class="text-sm">English</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Final Section: Copyright and Language -->
+
+    </div>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    const searchInput = document.getElementById('searchInput');
+    const searchInputContainer = document.getElementById('searchInputContainer');
+    const searchButton = document.getElementById('searchButton');
+    searchInput.addEventListener('focus', (e) => {
+      searchInputContainer.classList.remove('border-slate-400', 'hover:bg-slate-50')
+      searchInputContainer.classList.add('border-violet-700', 'outline-[1px]', 'outline-violet-700');
+    });
+    searchInput.addEventListener('blur', (e) => {
+      searchInputContainer.classList.add('border-slate-400', 'hover:bg-slate-50')
+      searchInputContainer.classList.remove('border-violet-700', 'outline-[1px]', 'outline-violet-700');
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      if (searchInput.value.length > 0) {
+        searchButton.classList.remove('opacity-20', 'cursor-not-allowed', 'disabled');
+        searchButton.classList.add('cursor-pointer');
+      } else {
+        searchButton.classList.add('opacity-20', 'cursor-not-allowed', 'disabled');
+        searchButton.classList.remove('cursor-pointer');
+      }
+    });
+
+
+
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.querySelector('.carousel-btn-left');
+    const nextBtn = document.querySelector('.carousel-btn-right');
+    let currentIndex = 0;
+    const totalItems = items.length;
+    const autoSwipeInterval = 5000; // 5 seconds
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function goToNext() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    }
+
+    function goToPrev() {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', goToNext);
+    prevBtn.addEventListener('click', goToPrev);
+
+    // Auto swipe
+    let autoSwipe = setInterval(goToNext, autoSwipeInterval);
+
+    // Pause auto swipe on hover
+    track.parentElement.addEventListener('mouseenter', () => {
+      clearInterval(autoSwipe);
+    });
+
+    track.parentElement.addEventListener('mouseleave', () => {
+      autoSwipe = setInterval(goToNext, autoSwipeInterval);
+    });
+
+
+    const pricingButtons = document.querySelectorAll('.pricingDownBtn');
+
+    pricingButtons.forEach(button => {
+      const chevron = button.querySelector('button');
+      const content = button.nextElementSibling;
+
+      // Ensure chevron has transition for smooth rotation
+      chevron.classList.add('transition-transform', 'duration-300');
+
+      button.addEventListener('click', () => {
+        console.log("Hello")
+        // Toggle the hidden class on mobile
+        content.classList.toggle('hidden');
+
+        // Rotate chevron: rotate-180 when open, remove when closed
+        if (content.classList.contains('hidden')) {
+          chevron.classList.remove('rotate-180');
+        } else {
+          chevron.classList.add('rotate-180');
+        }
+      });
+    });
+
+
+
+
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const myImages = [
+    //     "https://cms-images.udemycdn.com/96883mtakkm8/4kbyXne3Slx9Sfz4nTBqdf/8ac2b75db1a118f15e2fb5dfe2bb4567/desktop-hands-on-learning-2x.png",
+    //     "https://cms-images.udemycdn.com/96883mtakkm8/GUVYFTj0uwEQuJha5j7TZ/473be949e2751dd5826b141dc4c16892/desktop-certification-prep-2x.png",
+    //     "https://cms-images.udemycdn.com/96883mtakkm8/6q4N9BvIQusFoheoALJhGj/678c1a0bb6c2a22d95461d409492231e/desktop-insights-and-analytics-2x.png",
+    //     "https://cms-images.udemycdn.com/96883mtakkm8/385IhnON960Wvz50ooWIN3/d4e6738c97769258d387b3d609edaad4/desktop-customizable-2x.png"
+    //   ]
+    //   const featureOptions = document.querySelectorAll('.goalFeaturedOption');
+    //   const goalFeaturedImage = document.getElementById('goalFeaturedImage');
+
+    //   featureOptions.forEach((option, index) => {
+    //     option.addEventListener('click', () => {
+    //       featureOptions.forEach(opt => {
+    //         opt.classList.remove('isActiveGoal', 'bg-purple-500', 'border-purple-500');
+    //         opt.classList.add('bg-white', 'border-slate-300');
+    //       });
+    //       option.classList.add('isActiveGoal', 'bg-purple-500', 'border-purple-500');
+    //       option.classList.remove('bg-white', 'border-slate-300');
+
+    //       goalFeaturedImage.src = myImages[index];
+    //     });
+    //   });
+    // });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      feather.replace();
+
+      const myImages = [
+        "https://cms-images.udemycdn.com/96883mtakkm8/4kbyXne3Slx9Sfz4nTBqdf/8ac2b75db1a118f15e2fb5dfe2bb4567/desktop-hands-on-learning-2x.png",
+        "https://cms-images.udemycdn.com/96883mtakkm8/GUVYFTj0uwEQuJha5j7TZ/473be949e2751dd5826b141dc4c16892/desktop-certification-prep-2x.png",
+        "https://cms-images.udemycdn.com/96883mtakkm8/6q4N9BvIQusFoheoALJhGj/678c1a0bb6c2a22d95461d409492231e/desktop-insights-and-analytics-2x.png",
+        "https://cms-images.udemycdn.com/96883mtakkm8/385IhnON960Wvz50ooWIN3/d4e6738c97769258d387b3d609edaad4/desktop-customizable-2x.png"
+      ];
+
+      const featureOptions = document.querySelectorAll('.goalFeaturedOption');
+      const goalFeaturedImage = document.getElementById('goalFeaturedImage');
+      const carousel = document.querySelector('.carousel-v2');
+      const carouselItems = document.querySelectorAll('.carousel-item-v2');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dots = document.querySelectorAll('.carousel-dot-v2');
+
+      let currentIndex = 0;
+
+      // Desktop click handler
+      featureOptions.forEach((option, index) => {
+        option.addEventListener('click', () => {
+          featureOptions.forEach(opt => {
+            opt.classList.remove('isActiveGoal', 'bg-purple-500', 'border-purple-500');
+            opt.classList.add('bg-white', 'border-slate-300');
+          });
+          option.classList.add('isActiveGoal', 'bg-purple-500', 'border-purple-500');
+          option.classList.remove('bg-white', 'border-slate-300');
+
+          goalFeaturedImage.src = myImages[index];
+          currentIndex = index;
+
+          // Update dots for mobile
+          dots.forEach(dot => dot.classList.replace('bg-purple-500', 'bg-gray-300'));
+          dots[index].classList.replace('bg-gray-300', 'bg-purple-500');
+        });
+      });
+
+      // Mobile carousel handler
+      const updateCarousel = () => {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        featureOptions.forEach(opt => {
+          opt.classList.remove('isActiveGoal');
+          opt.classList.add('bg-white', 'border-slate-300');
+        });
+        carouselItems[currentIndex].classList.add('isActiveGoal');
+        carouselItems[currentIndex].classList.remove('bg-white', 'border-slate-300');
+
+        goalFeaturedImage.src = myImages[currentIndex];
+        dots.forEach(dot => dot.classList.replace('bg-purple-500', 'bg-gray-300'));
+        dots[currentIndex].classList.replace('bg-gray-300', 'bg-purple-500');
+      };
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        updateCarousel();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        updateCarousel();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
