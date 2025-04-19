@@ -443,7 +443,7 @@ const LearningPathHandler = (() => {
 
   const autoScrollToTreeBox = () => {
     // localStorage.setItem('firstAutoScroll', 'true');
-    const offset = 100;
+    const offset = 200;
     const rect = elements.treeSvg.getBoundingClientRect();
     window.scrollTo({
       top: rect.top + window.scrollY - offset,
@@ -482,10 +482,11 @@ const LearningPathHandler = (() => {
     renderTree(roadmap);
     const offset = 100;
     const rect = elements.treeSvg.getBoundingClientRect();
-    window.scrollTo({
-      top: rect.top + window.scrollY - offset,
-      behavior: 'smooth',
-    });
+    // window.scrollTo({
+    //   top: rect.top + window.scrollY - offset,
+    //   behavior: 'smooth',
+    // });
+    autoScrollToTreeBox();
   };
 
   const init = () => {
